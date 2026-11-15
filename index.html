@@ -190,40 +190,53 @@
             font-size: 13px;
         }
 
-        @media (max-width: 650px) {
-            header {
-                padding: 20px;
-            }
+        
+@media (max-width: 650px) {
+    header {
+        padding: 20px;
+    }
 
-            nav {
-                align-items: flex-start;
-            }
+    nav {
+        align-items: flex-start;
+    }
 
-            nav a {
-                margin: 0 12px 0 0;
-            }
+    nav a {
+        display: inline-block;
+        margin: 5px 12px 5px 0;
+    }
 
-            .hero {
-                padding: 55px 0;
-            }
+    .hero {
+        padding: 45px 0;
+    }
 
-            main {
-                padding: 0 15px;
-                margin: 25px auto;
-            }
+    main {
+        padding: 0 15px;
+        margin: 25px auto;
+    }
 
-            section {
-                padding: 22px;
-            }
+    section {
+        padding: 22px;
+    }
 
-            .interest-grid {
-                grid-template-columns: 1fr;
-            }
+    .interest-grid {
+        grid-template-columns: 1fr;
+    }
 
-            .pdf-viewer {
-                height: 600px;
-            }
-        }
+    .pdf-viewer {
+        display: none;
+    }
+
+    .pdf-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .pdf-links a {
+        display: inline-block;
+        margin: 0;
+    }
+}
     </style>
 </head>
 
