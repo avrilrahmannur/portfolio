@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Muhammad Avril Rahmannur - Electrical Engineering Portfolio">
+    <meta name="theme-color" content="#0b0d12">
+    <meta name="description" content="Muhammad Avril Rahmannur | Electrical Engineering Portfolio">
+
     <title>Muhammad Avril Rahmannur | Engineering Portfolio</title>
 
     <style>
         :root {
-            --background: #f7f5f2;
-            --surface: #ffffff;
-            --dark: #252525;
-            --text: #292929;
-            --muted: #777777;
-            --accent: #a33b32;
-            --border: #e5e1dc;
+            --bg: #0b0d12;
+            --surface: rgba(255, 255, 255, 0.055);
+            --surface-hover: rgba(255, 255, 255, 0.09);
+            --border: rgba(255, 255, 255, 0.11);
+            --text: #f1f2f5;
+            --muted: #a2a6b1;
+            --accent: #c77970;
+            --accent-soft: rgba(199, 121, 112, 0.13);
+            --max-width: 1120px;
         }
 
         * {
@@ -24,347 +28,1072 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 90px;
         }
 
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: var(--background);
+            min-height: 100vh;
+            background:
+                radial-gradient(
+                    circle at 12% 5%,
+                    rgba(139, 66, 76, 0.17),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 88% 38%,
+                    rgba(70, 82, 125, 0.13),
+                    transparent 32%
+                ),
+                var(--bg);
             color: var(--text);
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
             line-height: 1.7;
         }
 
-        header {
-            background: var(--dark);
-            color: white;
-            padding: 25px 8%;
-            border-bottom: 4px solid var(--accent);
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.13;
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                );
+            background-size: 48px 48px;
         }
 
-        nav {
-            max-width: 1100px;
-            margin: auto;
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: min(var(--max-width), calc(100% - 48px));
+            margin: 0 auto;
+        }
+
+        .glass {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 18px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.14);
+        }
+
+        /* NAVIGATION */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 13, 18, 0.78);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .navigation {
+            min-height: 76px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 25px;
+        }
+
+        .brand {
+            font-size: 15px;
+            font-weight: 750;
+            letter-spacing: 1.2px;
+            white-space: nowrap;
+        }
+
+        .brand span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 26px;
         }
 
-        .logo {
-            font-weight: bold;
-            letter-spacing: 1px;
+        .nav-links a {
+            color: var(--muted);
+            font-size: 13px;
+            transition: color 0.2s ease;
         }
 
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 22px;
-            font-size: 14px;
+        .nav-links a:hover {
+            color: white;
         }
 
-        nav a:hover {
-            color: #d99a93;
-        }
+        /* HERO */
 
         .hero {
-            max-width: 1100px;
-            margin: auto;
-            padding: 75px 0 65px;
+            padding: 95px 0 55px;
         }
 
-        .hero-label {
-            color: #d99a93;
-            font-size: 12px;
-            font-weight: bold;
+        .hero-card {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(30px, 6vw, 72px);
+            background:
+                linear-gradient(
+                    125deg,
+                    rgba(255,255,255,0.085),
+                    rgba(255,255,255,0.025)
+                );
+        }
+
+        .hero-card::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            right: -140px;
+            top: -160px;
+            background: rgba(199, 121, 112, 0.18);
+            filter: blur(85px);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 750;
             letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
-        .hero h1 {
-            font-size: clamp(32px, 5vw, 52px);
-            line-height: 1.2;
-            margin: 15px 0;
+        .eyebrow::before {
+            content: "";
+            width: 23px;
+            height: 1px;
+            background: var(--accent);
         }
 
-        .hero p {
-            color: #d0d0d0;
-            max-width: 700px;
+        h1 {
+            max-width: 850px;
+            margin: 22px 0 15px;
+            font-size: clamp(37px, 6vw, 66px);
+            line-height: 1.12;
+            letter-spacing: -2.5px;
         }
 
-        .hero-links {
+        .hero-description {
+            max-width: 690px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .hero-actions {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            margin-top: 25px;
+            margin-top: 30px;
         }
 
         .button {
-            display: inline-block;
-            padding: 10px 20px;
-            border: 1px solid #ffffff;
-            border-radius: 3px;
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 45px;
+            padding: 0 19px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            background: rgba(255,255,255,0.045);
+            font-size: 13px;
+            font-weight: 650;
+            transition: 0.2s ease;
+        }
+
+        .button:hover {
+            background: var(--surface-hover);
+            border-color: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
         }
 
         .button.primary {
             background: var(--accent);
+            color: #171214;
             border-color: var(--accent);
         }
 
+        .button.primary:hover {
+            background: #d38b81;
+        }
+
+        /* QUICK INFORMATION */
+
+        .quick-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            padding: 20px;
+        }
+
+        .info-value {
+            display: block;
+            font-size: 25px;
+            font-weight: 750;
+            letter-spacing: -0.5px;
+        }
+
+        .info-label {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* GENERAL SECTIONS */
+
         main {
-            max-width: 1100px;
-            margin: 45px auto;
-            padding: 0 25px;
+            padding-bottom: 70px;
         }
 
-        section {
-            background: var(--surface);
-            padding: 32px;
-            margin-bottom: 25px;
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            scroll-margin-top: 25px;
+        .section {
+            margin-top: 24px;
+            padding: clamp(24px, 4vw, 40px);
+            scroll-margin-top: 100px;
         }
 
-        .section-label {
+        .section-number {
             color: var(--accent);
             font-size: 11px;
-            font-weight: bold;
+            font-weight: 750;
             letter-spacing: 2px;
         }
 
         h2 {
-            font-size: 24px;
-            margin: 5px 0 18px;
+            margin: 7px 0 15px;
+            font-size: clamp(24px, 3vw, 31px);
+            letter-spacing: -0.7px;
         }
+
+        .section-description {
+            max-width: 780px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* ABOUT */
+
+        .about-content {
+            max-width: 850px;
+        }
+
+        .about-content p {
+            color: #c5c7ce;
+            font-size: 14px;
+        }
+
+        /* AREAS OF INTEREST */
 
         .interest-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 20px;
+            gap: 13px;
+            margin-top: 26px;
         }
 
-        .interest-item {
-            padding: 15px;
-            background: var(--background);
-            border-left: 3px solid var(--accent);
-            font-size: 14px;
-        }
-
-        .pdf-viewer {
-            width: 100%;
-            height: 850px;
-            margin-top: 20px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
+        .interest-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-height: 76px;
+            padding: 17px;
             border: 1px solid var(--border);
-            border-radius: 4px;
-            background: white;
+            border-radius: 11px;
+            background: rgba(255,255,255,0.035);
+            transition: 0.2s ease;
         }
 
-        .pdf-links {
-            margin-top: 18px;
+        .interest-card:hover {
+            background: var(--surface-hover);
+            border-color: rgba(199,121,112,0.4);
+            transform: translateY(-2px);
         }
 
-        a {
+        .interest-marker {
+            width: 8px;
+            height: 8px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 13px rgba(199,121,112,0.5);
+        }
+
+        .interest-card span:last-child {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* EXPERIENCE AND TOOLS */
+
+        .experience-card {
+            margin-top: 22px;
+            padding: 22px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.035);
+        }
+
+        .experience-card h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .experience-meta {
+            margin: 4px 0 12px;
             color: var(--accent);
+            font-size: 12px;
         }
 
-        .pdf-links a {
-            font-weight: bold;
-            text-decoration: none;
-            margin-right: 15px;
-        }
-
-        footer {
-            background: var(--dark);
-            color: #cccccc;
-            text-align: center;
-            padding: 25px;
+        .experience-card p {
+            margin-bottom: 0;
+            color: var(--muted);
             font-size: 13px;
         }
 
-        
-@media (max-width: 650px) {
-    header {
-        padding: 20px;
-    }
+        .tool-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 20px;
+        }
 
-    nav {
-        align-items: flex-start;
-    }
+        .tool {
+            padding: 7px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: #c6c8d0;
+            background: rgba(255,255,255,0.035);
+            font-size: 12px;
+        }
 
-    nav a {
-        display: inline-block;
-        margin: 5px 12px 5px 0;
-    }
+        /* PDF PORTFOLIO */
 
-    .hero {
-        padding: 45px 0;
-    }
+        .portfolio-card {
+            margin-top: 22px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            background: rgba(0,0,0,0.22);
+        }
 
-    main {
-        padding: 0 15px;
-        margin: 25px auto;
-    }
+        .pdf-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 13px;
+            padding: 16px 19px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255,255,255,0.035);
+        }
 
-    section {
-        padding: 22px;
-    }
+        .pdf-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+        }
 
-    .interest-grid {
-        grid-template-columns: 1fr;
-    }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #75bd91;
+            box-shadow: 0 0 10px rgba(117,189,145,0.5);
+        }
 
-    .pdf-viewer {
-        display: none;
-    }
+        .pdf-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
 
-    .pdf-links {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
+        .pdf-links a {
+            padding: 7px 11px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: #e8e8ec;
+            font-size: 11px;
+            transition: 0.2s ease;
+        }
 
-    .pdf-links a {
-        display: inline-block;
-        margin: 0;
-    }
-}
+        .pdf-links a:hover {
+            background: var(--surface-hover);
+            border-color: var(--accent);
+        }
+
+        .pdf-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pdf-controls {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .pdf-controls button {
+            min-height: 34px;
+            padding: 5px 11px;
+            color: #e7e8eb;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .pdf-controls button:hover:not(:disabled) {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+        }
+
+        .pdf-controls button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        #page-status {
+            min-width: 90px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .pdf-stage {
+            min-height: 350px;
+            padding: 20px 14px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow: auto;
+            background:
+                radial-gradient(
+                    circle at 50% 15%,
+                    rgba(255,255,255,0.055),
+                    transparent 65%
+                ),
+                #10131a;
+        }
+
+        #pdf-canvas {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            background: white;
+            border-radius: 2px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+        }
+
+        .pdf-message {
+            padding: 40px 15px;
+            color: var(--muted);
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .pdf-note {
+            padding: 12px 17px;
+            margin: 0;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-size: 11px;
+        }
+
+        /* CONTACT */
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .contact-links a {
+            padding: 10px 15px;
+            color: #e5e5ea;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            font-size: 13px;
+        }
+
+        .contact-links a:hover {
+            color: white;
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 28px 20px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 11px;
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        @media (max-width: 700px) {
+            .container {
+                width: min(100% - 30px, var(--max-width));
+            }
+
+            .navigation {
+                min-height: auto;
+                padding: 17px 0;
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 13px;
+            }
+
+            .nav-links {
+                width: 100%;
+                gap: 19px;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 3px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding-top: 45px;
+            }
+
+            .hero-card {
+                padding: 29px 23px;
+            }
+
+            h1 {
+                letter-spacing: -1.5px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .quick-info {
+                gap: 8px;
+            }
+
+            .info-card {
+                padding: 13px 10px;
+            }
+
+            .info-value {
+                font-size: 19px;
+            }
+
+            .info-label {
+                font-size: 10px;
+            }
+
+            .interest-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 23px 19px;
+            }
+
+            .pdf-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .pdf-toolbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .pdf-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .pdf-stage {
+                padding: 12px 8px;
+                min-height: 280px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-<header>
-    <nav>
-        <div class="logo">AVRIL RAHMANNUR</div>
-        <div>
+<header class="site-header">
+    <div class="container navigation">
+        <a class="brand" href="#home">
+            AR <span>/</span> ENGINEERING
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
             <a href="#about">About</a>
-            <a href="#interests">Interests</a>
+            <a href="#interests">Expertise</a>
+            <a href="#experience">Experience</a>
             <a href="#portfolio">Portfolio</a>
             <a href="#contact">Contact</a>
-        </div>
-    </nav>
-
-    <div class="hero">
-        <div class="hero-label">ELECTRICAL ENGINEERING PORTFOLIO</div>
-
-        <h1>Muhammad Avril Rahmannur</h1>
-
-        <p>
-            Electrical Engineering Student
-            | Power Systems
-            | Industrial Automation
-            | Renewable Energy
-        </p>
-
-        <div class="hero-links">
-            <a class="button primary" href="#portfolio">View Portfolio</a>
-            <a class="button" href="#contact">Contact Me</a>
-        </div>
+        </nav>
     </div>
 </header>
 
-<main>
+<div class="container">
 
-    <section id="about">
-        <div class="section-label">01 / PROFILE</div>
-        <h2>About Me</h2>
+    <section class="hero" id="home">
+        <div class="hero-card glass">
+            <div class="eyebrow">
+                Electrical Engineering Undergraduate
+            </div>
 
-        <p>
-            Electrical Engineering undergraduate at
-            Universitas Pendidikan Indonesia (GPA: 3.74/4.00),
-            with an interest in power systems, electrical
-            installations, industrial automation, and
-            renewable energy systems.
-        </p>
+            <h1>Muhammad Avril Rahmannur</h1>
 
-        <p>
-            Through academic projects and internship experience
-            at PT PLN (Persero) UID Banten, I have developed
-            technical and analytical skills in engineering
-            modeling, system analysis, data processing,
-            and technical reporting.
-        </p>
-    </section>
+            <p class="hero-description">
+                Power Systems · Industrial Automation · Renewable Energy
+            </p>
 
-    <section id="interests">
-        <div class="section-label">02 / EXPERTISE</div>
-        <h2>Technical Interests</h2>
+            <p class="hero-description">
+                Electrical Engineering student at Universitas Pendidikan
+                Indonesia, interested in developing reliable, efficient,
+                and well-integrated electrical systems.
+            </p>
 
-        <div class="interest-grid">
-            <div class="interest-item">Power Systems Engineering</div>
-            <div class="interest-item">Electrical Installation and Distribution</div>
-            <div class="interest-item">Industrial Automation and PLC</div>
-            <div class="interest-item">SCADA and HMI Systems</div>
-            <div class="interest-item">Renewable Energy Systems</div>
-            <div class="interest-item">Power System Analysis</div>
+            <div class="hero-actions">
+                <a class="button primary" href="#portfolio">
+                    Explore My Portfolio
+                </a>
+
+                <a class="button" href="#contact">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+
+        <div class="quick-info">
+            <div class="info-card glass">
+                <span class="info-value">3.74</span>
+                <span class="info-label">GPA / 4.00</span>
+            </div>
+
+            <div class="info-card glass">
+                <span class="info-value">UPI</span>
+                <span class="info-label">Universitas Pendidikan Indonesia</span>
+            </div>
+
+            <div class="info-card glass">
+                <span class="info-value">PLN</span>
+                <span class="info-label">Engineering Internship</span>
+            </div>
         </div>
     </section>
 
-    <section id="portfolio">
-        <div class="section-label">03 / SELECTED WORK</div>
-        <h2>Engineering Portfolio</h2>
+    <main>
 
-        <p>
-            Explore my academic and technical projects,
-            including engineering design, system analysis,
-            industrial automation, and renewable energy studies.
-        </p>
+        <section class="section glass" id="about">
+            <div class="section-number">01 / PROFILE</div>
+            <h2>About Me</h2>
 
-        <div class="pdf-viewer">
-            <iframe
-                src="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
-                title="Muhammad Avril Rahmannur Engineering Portfolio">
-            </iframe>
-        </div>
+            <div class="about-content">
+                <p>
+                    Electrical Engineering undergraduate at Universitas
+                    Pendidikan Indonesia (GPA: 3.74/4.00), with an interest
+                    in power systems, electrical installations, industrial
+                    automation, and renewable energy systems.
+                </p>
 
-        <div class="pdf-links">
-            <a href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
-               target="_blank" rel="noopener">
-                Open PDF in a new tab
-            </a>
+                <p>
+                    Through academic projects and internship experience
+                    at PT PLN (Persero) UID Banten, I have developed
+                    technical and analytical skills in engineering
+                    modeling, system analysis, data processing,
+                    and technical reporting.
+                </p>
+            </div>
+        </section>
 
-            <a href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
-               download>
-                Download PDF
-            </a>
-        </div>
-    </section>
+        <section class="section glass" id="interests">
+            <div class="section-number">02 / ENGINEERING FOCUS</div>
+            <h2>Technical Interests</h2>
 
-    <section id="contact">
-        <div class="section-label">04 / GET IN TOUCH</div>
-        <h2>Contact</h2>
+            <p class="section-description">
+                Areas of electrical engineering that I have explored
+                through academic projects and technical learning.
+            </p>
 
-        <p>
-            <a href="mailto:avril.rahmannur05@gmail.com">
-                Email
-            </a>
-            |
-            <a href="https://www.linkedin.com/in/muhammad-avril-rahmannur/"
-               target="_blank" rel="noopener">
-                LinkedIn
-            </a>
-            |
-            <a href="https://github.com/avrilrahmannur"
-               target="_blank" rel="noopener">
-                GitHub
-            </a>
-        </p>
-    </section>
+            <div class="interest-grid">
+                <div class="interest-card">
+                    <span class="interest-marker"></span>
+                    <span>Power Systems Engineering</span>
+                </div>
 
-</main>
+                <div class="interest-card">
+                    <span class="interest-marker"></span>
+                    <span>Electrical Installation and Distribution</span>
+                </div>
+
+                <div class="interest-card">
+                    <span class="interest-marker"></span>
+                    <span>Industrial Automation and PLC</span>
+                </div>
+
+                <div class="interest-card">
+                    <span class="interest-marker"></span>
+                    <span>SCADA and HMI Systems</span>
+                </div>
+
+                <div class="interest-card">
+                    <span class="interest-marker"></span>
+                    <span>Renewable Energy Systems</span>
+                </div>
+
+                <div class="interest-card">
+                    <span class="interest-marker"></span>
+                    <span>Power System Analysis</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section glass" id="experience">
+            <div class="section-number">03 / EXPERIENCE & TOOLS</div>
+            <h2>Engineering Experience</h2>
+
+            <div class="experience-card">
+                <h3>Engineering Intern</h3>
+
+                <div class="experience-meta">
+                    PT PLN (Persero) UID Banten · July – September 2026
+                </div>
+
+                <p>
+                    Worked on electricity distribution reliability
+                    data processing, performance dashboard development,
+                    and observation of distribution substation
+                    maintenance and post-maintenance assessments.
+                </p>
+            </div>
+
+            <div class="tool-list">
+                <span class="tool">DIgSILENT PowerFactory</span>
+                <span class="tool">HOMER Pro</span>
+                <span class="tool">Omron CX-Programmer</span>
+                <span class="tool">CX-Designer</span>
+                <span class="tool">AutoCAD</span>
+                <span class="tool">Microsoft Excel</span>
+                <span class="tool">Power Query</span>
+                <span class="tool">Looker Studio</span>
+            </div>
+        </section>
+
+        <section class="section glass" id="portfolio">
+            <div class="section-number">04 / SELECTED WORK</div>
+            <h2>Engineering Portfolio</h2>
+
+            <p class="section-description">
+                Explore my academic and technical projects, covering
+                electrical installation planning, power system analysis,
+                industrial automation, and renewable energy systems.
+            </p>
+
+            <div class="portfolio-card">
+
+                <div class="pdf-header">
+                    <div class="pdf-title">
+                        <span class="status-dot"></span>
+                        ENGINEERING PORTFOLIO / PDF
+                    </div>
+
+                    <div class="pdf-links">
+                        <a
+                            href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
+                            target="_blank"
+                            rel="noopener">
+                            Open PDF
+                        </a>
+
+                        <a
+                            href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
+                            download>
+                            Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pdf-toolbar">
+                    <div class="pdf-controls">
+                        <button id="prev-page" type="button" disabled>
+                            Previous
+                        </button>
+
+                        <span id="page-status">Loading PDF...</span>
+
+                        <button id="next-page" type="button" disabled>
+                            Next
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pdf-stage" id="pdf-stage">
+                    <div class="pdf-message" id="pdf-message"
+                         role="status" aria-live="polite">
+                        Loading portfolio document...
+                    </div>
+
+                    <canvas id="pdf-canvas"
+                            aria-label="Portfolio PDF page"
+                            hidden>
+                    </canvas>
+                </div>
+
+                <p class="pdf-note">
+                    Use Previous and Next to browse the document.
+                    Open or download the PDF for the full document experience.
+                </p>
+
+            </div>
+        </section>
+
+        <section class="section glass" id="contact">
+            <div class="section-number">05 / CONTACT</div>
+            <h2>Let's Connect</h2>
+
+            <p class="section-description">
+                Feel free to contact me regarding engineering,
+                academic projects, professional opportunities,
+                or collaboration.
+            </p>
+
+            <div class="contact-links">
+                <a href="mailto:avril.rahmannur05@gmail.com">
+                    Email
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/muhammad-avril-rahmannur/"
+                    target="_blank"
+                    rel="noopener">
+                    LinkedIn
+                </a>
+
+                <a
+                    href="https://github.com/avrilrahmannur"
+                    target="_blank"
+                    rel="noopener">
+                    GitHub
+                </a>
+            </div>
+        </section>
+
+    </main>
+</div>
 
 <footer>
-    <p>© 2026 Muhammad Avril Rahmannur | Engineering Portfolio</p>
+    © 2026 Muhammad Avril Rahmannur · Engineering Portfolio
 </footer>
+
+<script type="module">
+    const PDF_URL =
+        "Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf";
+
+    const PDFJS_VERSION = "6.5.438";
+
+    const PDFJS_BASE =
+        `https://cdn.jsdelivr.net/npm/pdfjs-dist@${PDFJS_VERSION}`;
+
+    const canvas = document.getElementById("pdf-canvas");
+    const context = canvas.getContext("2d", { alpha: false });
+
+    const stage = document.getElementById("pdf-stage");
+    const message = document.getElementById("pdf-message");
+    const pageStatus = document.getElementById("page-status");
+
+    const previousButton = document.getElementById("prev-page");
+    const nextButton = document.getElementById("next-page");
+
+    let pdfDocument = null;
+    let currentPage = 1;
+    let renderQueue = Promise.resolve();
+    let resizeTimer = null;
+
+    function showError(error) {
+        console.error("PDF viewer error:", error);
+
+        canvas.hidden = true;
+        message.hidden = false;
+        message.textContent =
+            "The PDF preview could not be loaded. Please use the Open PDF link above.";
+        pageStatus.textContent = "Preview unavailable";
+
+        previousButton.disabled = true;
+        nextButton.disabled = true;
+    }
+
+    async function renderPage() {
+        if (!pdfDocument) return;
+
+        try {
+            message.hidden = false;
+            message.textContent = "Rendering page " + currentPage + "...";
+
+            const page = await pdfDocument.getPage(currentPage);
+
+            const originalViewport = page.getViewport({ scale: 1 });
+
+            const availableWidth = Math.max(
+                220,
+                stage.clientWidth - 30
+            );
+
+            const scale = availableWidth / originalViewport.width;
+
+            const viewport = page.getViewport({ scale });
+
+            const outputScale = Math.min(
+                window.devicePixelRatio || 1,
+                2
+            );
+
+            canvas.width = Math.floor(viewport.width * outputScale);
+            canvas.height = Math.floor(viewport.height * outputScale);
+
+            canvas.style.width = viewport.width + "px";
+            canvas.style.height = viewport.height + "px";
+
+            const renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+                transform: [
+                    outputScale, 0,
+                    0, outputScale,
+                    0, 0
+                ],
+                background: "rgb(255,255,255)"
+            };
+
+            await page.render(renderContext).promise;
+
+            canvas.hidden = false;
+            message.hidden = true;
+
+            pageStatus.textContent =
+                `Page ${currentPage} of ${pdfDocument.numPages}`;
+
+            previousButton.disabled = currentPage <= 1;
+            nextButton.disabled =
+                currentPage >= pdfDocument.numPages;
+
+        } catch (error) {
+            showError(error);
+        }
+    }
+
+    function requestRender() {
+        renderQueue = renderQueue
+            .then(renderPage)
+            .catch(showError);
+    }
+
+    previousButton.addEventListener("click", () => {
+        if (currentPage > 1) {
+            currentPage--;
+            requestRender();
+        }
+    });
+
+    nextButton.addEventListener("click", () => {
+        if (pdfDocument && currentPage < pdfDocument.numPages) {
+            currentPage++;
+            requestRender();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+
+        resizeTimer = setTimeout(() => {
+            if (pdfDocument) {
+                requestRender();
+            }
+        }, 250);
+    });
+
+    async function loadPDF() {
+        try {
+            const pdfjsLib = await import(
+                `${PDFJS_BASE}/build/pdf.min.mjs`
+            );
+
+            pdfjsLib.GlobalWorkerOptions.workerSrc =
+                `${PDFJS_BASE}/build/pdf.worker.min.mjs`;
+
+            const loadingTask = pdfjsLib.getDocument({
+                url: PDF_URL,
+                cMapUrl: `${PDFJS_BASE}/cmaps/`,
+                cMapPacked: true,
+                standardFontDataUrl:
+                    `${PDFJS_BASE}/standard_fonts/`
+            });
+
+            pdfDocument = await loadingTask.promise;
+
+            currentPage = 1;
+            requestRender();
+
+        } catch (error) {
+            showError(error);
+        }
+    }
+
+    loadPDF();
+</script>
 
 </body>
 </html>
