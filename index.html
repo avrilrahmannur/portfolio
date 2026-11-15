@@ -4,19 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#24252b">
-    <meta name="description" content="Muhammad Avril Rahmannur - Electrical Engineering Portfolio">
+    <meta name="theme-color" content="#26262d">
+    <meta name="description" content="Muhammad Avril Rahmannur | Personal and Engineering Portfolio">
 
     <title>Muhammad Avril Rahmannur | Portfolio</title>
 
     <style>
         :root {
-            --background: #24252b;
-            --text: #f7f5f5;
-            --muted: #c6c5cb;
-            --accent: #d18b83;
-            --glass: rgba(255, 255, 255, 0.105);
-            --glass-border: rgba(255, 255, 255, 0.24);
+            --text: #ffffff;
+            --muted: rgba(255,255,255,0.76);
+            --accent: #e5a19a;
+            --glass: rgba(255,255,255,0.13);
+            --glass-border: rgba(255,255,255,0.26);
         }
 
         * {
@@ -30,164 +29,159 @@
         body {
             margin: 0;
             min-height: 100vh;
-            padding: 55px 20px;
-            background: var(--background);
-            color: var(--text);
+            padding: 55px 18px;
+            overflow-x: hidden;
             font-family: -apple-system, BlinkMacSystemFont,
                 "Segoe UI", Arial, sans-serif;
+            color: var(--text);
+            background: #292930;
             line-height: 1.7;
-            overflow-x: hidden;
         }
 
-        /* BACKGROUND LIGHT AND BLUR */
+        /* FROSTED BACKGROUND */
 
-        .background-effects {
+        .background {
             position: fixed;
             inset: 0;
             z-index: -2;
             overflow: hidden;
             background:
                 radial-gradient(
-                    ellipse at 12% 15%,
-                    rgba(195, 112, 106, 0.30),
-                    transparent 38%
+                    ellipse at 18% 15%,
+                    rgba(195,118,113,0.48),
+                    transparent 42%
                 ),
                 radial-gradient(
-                    ellipse at 90% 45%,
-                    rgba(122, 133, 164, 0.28),
-                    transparent 38%
+                    ellipse at 85% 45%,
+                    rgba(112,126,155,0.46),
+                    transparent 43%
                 ),
                 linear-gradient(
-                    140deg,
-                    #313139,
-                    #202127 60%,
-                    #292a32
+                    145deg,
+                    #34343c,
+                    #24242b 65%,
+                    #35343d
                 );
         }
 
-        .background-effects::before,
-        .background-effects::after {
+        .background::before,
+        .background::after {
             content: "";
             position: absolute;
             width: 420px;
             height: 420px;
             border-radius: 50%;
             filter: blur(100px);
-            opacity: 0.5;
+            opacity: 0.55;
         }
 
-        .background-effects::before {
-            top: 10%;
+        .background::before {
             left: -180px;
-            background: #9d6465;
+            top: 15%;
+            background: #bd7774;
         }
 
-        .background-effects::after {
+        .background::after {
             right: -180px;
             top: 55%;
-            background: #616b89;
+            background: #687692;
         }
 
-        /* PAGE */
+        /* MAIN LAYOUT */
 
-        .page {
+        .container {
             width: 100%;
-            max-width: 920px;
+            max-width: 880px;
             margin: 0 auto;
         }
 
-        .section-card {
+        .glass-card {
             position: relative;
             overflow: hidden;
-            margin-bottom: 25px;
-            padding: clamp(27px, 5vw, 48px);
+            margin-bottom: 24px;
+            padding: clamp(26px, 5vw, 44px);
             border: 1px solid var(--glass-border);
-            border-radius: 25px;
-
+            border-radius: 26px;
             background: var(--glass);
-
-            backdrop-filter: blur(28px) saturate(180%);
-            -webkit-backdrop-filter: blur(28px) saturate(180%);
-
+            backdrop-filter: blur(30px) saturate(175%);
+            -webkit-backdrop-filter: blur(30px) saturate(175%);
             box-shadow:
-                0 24px 65px rgba(0, 0, 0, 0.19),
-                inset 0 1px 1px rgba(255, 255, 255, 0.22),
-                inset 0 -1px 1px rgba(255, 255, 255, 0.05);
-
+                0 22px 55px rgba(0,0,0,0.17),
+                inset 0 1px 1px rgba(255,255,255,0.24),
+                inset 0 -1px 1px rgba(255,255,255,0.06);
             scroll-margin-top: 25px;
         }
 
-        .section-card::before {
+        .glass-card::before {
             content: "";
             position: absolute;
             top: 0;
-            left: 8%;
-            right: 8%;
+            left: 10%;
+            width: 80%;
             height: 1px;
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255,255,255,0.55),
+                rgba(255,255,255,0.65),
                 transparent
             );
+            pointer-events: none;
         }
 
-        .eyebrow {
-            margin: 0 0 16px;
+        .section-label {
+            margin: 0 0 15px;
             color: var(--accent);
             font-size: 11px;
-            font-weight: 750;
+            font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
         h1 {
             margin: 0;
-            max-width: 760px;
-            font-size: clamp(35px, 7vw, 59px);
-            line-height: 1.13;
+            font-size: clamp(36px, 7vw, 58px);
+            line-height: 1.15;
             letter-spacing: -2px;
         }
 
         h2 {
             margin: 0;
-            font-size: clamp(25px, 4vw, 34px);
+            font-size: clamp(26px, 4vw, 34px);
             line-height: 1.25;
-            letter-spacing: -0.8px;
+            letter-spacing: -0.7px;
         }
 
         p {
             color: var(--muted);
         }
 
+        /* CARD 01 - ABOUT */
+
         .role {
-            margin: 16px 0 5px;
-            color: #f0e9e8;
-            font-size: 17px;
-            font-weight: 550;
+            margin: 15px 0 3px;
+            color: #f2e9e8;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .specialization {
-            margin: 0 0 25px;
+            margin: 3px 0 24px;
             color: var(--accent);
             font-size: 13px;
-            letter-spacing: 0.2px;
         }
 
-        .intro {
-            max-width: 700px;
+        .introduction {
+            max-width: 720px;
             margin: 0;
             font-size: 14px;
             line-height: 1.9;
         }
 
-        /* BUTTONS */
-
-        .actions {
+        .action-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 30px;
+            gap: 11px;
+            margin-top: 28px;
         }
 
         .button {
@@ -195,11 +189,11 @@
             align-items: center;
             justify-content: center;
             min-height: 45px;
-            padding: 0 19px;
-            border: 1px solid rgba(255,255,255,0.28);
+            padding: 0 18px;
+            border: 1px solid rgba(255,255,255,0.26);
             border-radius: 12px;
+            color: white;
             background: rgba(255,255,255,0.10);
-            color: #fff;
             font-size: 13px;
             font-weight: 650;
             text-decoration: none;
@@ -207,98 +201,97 @@
         }
 
         .button:hover {
-            background: rgba(255,255,255,0.19);
-            border-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.20);
+            border-color: rgba(255,255,255,0.48);
             transform: translateY(-2px);
         }
 
         .button.primary {
-            background: rgba(209, 139, 131, 0.85);
-            border-color: rgba(255,255,255,0.22);
-            color: #241a1a;
+            color: #261a1a;
+            background: rgba(229,161,154,0.92);
+            border-color: rgba(255,255,255,0.3);
         }
 
         .button.primary:hover {
-            background: #e0a098;
+            background: #f0b5ae;
         }
 
-        /* PORTFOLIO */
+        /* CARD 02 - PORTFOLIO */
 
         .portfolio-description {
-            margin: 13px 0 22px;
+            margin: 12px 0 22px;
             font-size: 14px;
         }
 
-        .pdf-shell {
+        .pdf-frame {
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.22);
+            border: 1px solid rgba(255,255,255,0.23);
             border-radius: 17px;
-            background: rgba(20,21,26,0.38);
-            box-shadow:
-                inset 0 1px rgba(255,255,255,0.14),
-                0 12px 35px rgba(0,0,0,0.13);
+            background: rgba(16,17,22,0.35);
+            box-shadow: inset 0 1px rgba(255,255,255,0.12);
         }
 
-        .pdf-topbar {
+        .pdf-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
             padding: 15px 17px;
-            border-bottom: 1px solid rgba(255,255,255,0.14);
+            border-bottom: 1px solid rgba(255,255,255,0.13);
             background: rgba(255,255,255,0.055);
         }
 
-        .pdf-label {
+        .pdf-name {
             display: flex;
             align-items: center;
             gap: 9px;
-            color: #f0eeee;
+            color: white;
             font-size: 12px;
             font-weight: 650;
         }
 
-        .pdf-dot {
+        .pdf-status {
             width: 7px;
             height: 7px;
             border-radius: 50%;
-            background: #8fc8a4;
-            box-shadow: 0 0 10px rgba(143,200,164,0.6);
+            background: #94c9a3;
+            box-shadow: 0 0 9px rgba(148,201,163,0.6);
         }
 
-        .pdf-actions {
+        .pdf-links {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        .pdf-actions a {
+        .pdf-links a {
             padding: 7px 11px;
             border: 1px solid rgba(255,255,255,0.20);
             border-radius: 8px;
-            color: #f5eeee;
+            color: white;
             background: rgba(255,255,255,0.06);
             font-size: 11px;
             text-decoration: none;
+            transition: 0.2s ease;
         }
 
-        .pdf-actions a:hover {
-            background: rgba(255,255,255,0.15);
+        .pdf-links a:hover {
+            background: rgba(255,255,255,0.17);
         }
 
-        .pdf-toolbar {
+        .pdf-controls {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 16px;
+            gap: 15px;
             padding: 12px;
             border-bottom: 1px solid rgba(255,255,255,0.12);
         }
 
-        .pdf-toolbar button {
+        .pdf-controls button {
             padding: 7px 13px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.21);
             border-radius: 8px;
             color: white;
             background: rgba(255,255,255,0.08);
@@ -306,11 +299,11 @@
             font-size: 12px;
         }
 
-        .pdf-toolbar button:hover:not(:disabled) {
+        .pdf-controls button:hover:not(:disabled) {
             background: rgba(255,255,255,0.19);
         }
 
-        .pdf-toolbar button:disabled {
+        .pdf-controls button:disabled {
             opacity: 0.35;
             cursor: not-allowed;
         }
@@ -325,38 +318,38 @@
         .pdf-stage {
             width: 100%;
             min-height: 300px;
-            padding: 20px 12px;
+            padding: 18px 10px;
             display: flex;
-            justify-content: center;
             align-items: flex-start;
+            justify-content: center;
             overflow: hidden;
-            background: rgba(10,11,15,0.20);
+            background: rgba(12,13,17,0.25);
         }
 
         #pdf-canvas {
             display: block;
-            max-width: 100%;
             height: auto;
-            border-radius: 3px;
+            max-width: 100%;
             background: white;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.32);
+            border-radius: 3px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
         }
 
         #pdf-message {
-            padding: 55px 15px;
+            padding: 50px 15px;
             color: var(--muted);
-            font-size: 13px;
             text-align: center;
+            font-size: 13px;
         }
 
         .pdf-note {
             margin: 0;
-            padding: 13px 16px;
+            padding: 12px 16px;
             border-top: 1px solid rgba(255,255,255,0.12);
             font-size: 11px;
         }
 
-        /* CONTACT */
+        /* CARD 03 - CONTACT */
 
         .contact-description {
             max-width: 650px;
@@ -373,39 +366,68 @@
         .contact-link {
             display: inline-flex;
             align-items: center;
-            gap: 9px;
-            padding: 11px 16px;
-            border: 1px solid rgba(255,255,255,0.22);
+            justify-content: center;
+            min-height: 45px;
+            padding: 0 16px;
+            border: 1px solid rgba(255,255,255,0.24);
             border-radius: 11px;
-            background: rgba(255,255,255,0.07);
-            color: #fff;
+            color: white;
+            background: rgba(255,255,255,0.09);
             font-size: 13px;
+            font-weight: 600;
             text-decoration: none;
             transition: 0.2s ease;
         }
 
         .contact-link:hover {
-            background: rgba(255,255,255,0.17);
-            border-color: rgba(255,255,255,0.42);
+            background: rgba(255,255,255,0.19);
+            border-color: rgba(255,255,255,0.46);
             transform: translateY(-2px);
+        }
+
+        .contact-link.whatsapp {
+            background: rgba(64,145,104,0.35);
+            border-color: rgba(125,211,161,0.38);
+        }
+
+        .contact-link.whatsapp:hover {
+            background: rgba(64,145,104,0.55);
+        }
+
+        .email-fallback {
+            margin-top: 14px;
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .email-fallback a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer {
+            padding: 12px 10px 25px;
+            color: rgba(255,255,255,0.58);
+            text-align: center;
+            font-size: 11px;
         }
 
         /* MOBILE */
 
         @media (max-width: 600px) {
             body {
-                padding: 25px 13px;
+                padding: 27px 13px;
             }
 
-            .section-card {
-                margin-bottom: 17px;
+            .glass-card {
                 padding: 26px 21px;
+                margin-bottom: 17px;
                 border-radius: 21px;
             }
 
             h1 {
-                font-size: clamp(34px, 10vw, 47px);
-                letter-spacing: -1.5px;
+                font-size: clamp(34px, 9.5vw, 46px);
+                letter-spacing: -1.4px;
             }
 
             .role {
@@ -417,32 +439,18 @@
                 line-height: 1.7;
             }
 
-            .intro {
+            .introduction {
                 font-size: 13px;
             }
 
-            .actions {
-                margin-top: 22px;
-            }
-
-            .button {
-                min-height: 43px;
-                padding: 0 14px;
-                font-size: 12px;
-            }
-
-            .pdf-topbar {
+            .pdf-header {
                 align-items: flex-start;
                 flex-direction: column;
             }
 
             .pdf-stage {
-                min-height: 250px;
-                padding: 12px 8px;
-            }
-
-            .pdf-toolbar {
-                gap: 9px;
+                min-height: 260px;
+                padding: 12px 6px;
             }
 
             .contact-links {
@@ -450,7 +458,7 @@
             }
 
             .contact-link {
-                justify-content: center;
+                width: 100%;
             }
         }
 
@@ -468,27 +476,25 @@
 
 <body>
 
-<div class="background-effects"></div>
+<div class="background"></div>
 
-<div class="page">
+<main class="container">
 
-    <!-- SECTION 1: INTRODUCTION -->
+    <!-- 01. ABOUT ME -->
 
-    <section class="section-card" id="about">
+    <section class="glass-card" id="about">
 
-        <div class="eyebrow">01 / ABOUT ME</div>
+        <div class="section-label">01 / ABOUT ME</div>
 
         <h1>Muhammad Avril Rahmannur</h1>
 
-        <p class="role">
-            Electrical Engineering Student
-        </p>
+        <p class="role">Electrical Engineering Student</p>
 
         <p class="specialization">
             Power Systems · Industrial Automation · Renewable Energy
         </p>
 
-        <p class="intro">
+        <p class="introduction">
             Electrical Engineering undergraduate at Universitas
             Pendidikan Indonesia (GPA: 3.74/4.00), with an interest
             in power systems, electrical installations, industrial
@@ -500,7 +506,7 @@
             system analysis, data processing, and technical reporting.
         </p>
 
-        <div class="actions">
+        <div class="action-row">
             <a class="button primary" href="#portfolio">
                 View My Portfolio
             </a>
@@ -513,13 +519,13 @@
     </section>
 
 
-    <!-- SECTION 2: PORTFOLIO -->
+    <!-- 02. MY PORTFOLIO -->
 
-    <section class="section-card" id="portfolio">
+    <section class="glass-card" id="portfolio">
 
-        <div class="eyebrow">02 / SELECTED WORK</div>
+        <div class="section-label">02 / MY PORTFOLIO</div>
 
-        <h2>Engineering Portfolio</h2>
+        <h2>My Portfolio</h2>
 
         <p class="portfolio-description">
             Explore my academic and technical projects in electrical
@@ -527,16 +533,16 @@
             and renewable energy.
         </p>
 
-        <div class="pdf-shell">
+        <div class="pdf-frame">
 
-            <div class="pdf-topbar">
+            <div class="pdf-header">
 
-                <div class="pdf-label">
-                    <span class="pdf-dot"></span>
-                    PORTFOLIO DOCUMENT
+                <div class="pdf-name">
+                    <span class="pdf-status"></span>
+                    Portfolio PDF
                 </div>
 
-                <div class="pdf-actions">
+                <div class="pdf-links">
                     <a
                         href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
                         target="_blank"
@@ -547,13 +553,13 @@
                     <a
                         href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
                         download>
-                        Download
+                        Download PDF
                     </a>
                 </div>
 
             </div>
 
-            <div class="pdf-toolbar">
+            <div class="pdf-controls">
 
                 <button id="previous-page" type="button" disabled>
                     Previous
@@ -580,8 +586,8 @@
             </div>
 
             <p class="pdf-note">
-                Browse the document using the page controls above.
-                For the full document, open or download the PDF.
+                Browse the pages using the navigation controls.
+                Open the PDF for the complete document experience.
             </p>
 
         </div>
@@ -589,11 +595,11 @@
     </section>
 
 
-    <!-- SECTION 3: CONTACT -->
+    <!-- 03. CONTACT -->
 
-    <section class="section-card" id="contact">
+    <section class="glass-card" id="contact">
 
-        <div class="eyebrow">03 / CONTACT</div>
+        <div class="section-label">03 / CONTACT</div>
 
         <h2>Let's Connect</h2>
 
@@ -605,12 +611,26 @@
 
         <div class="contact-links">
 
+            <!-- WhatsApp -->
             <a
-                class="contact-link"
-                href="mailto:avril.rahmannur05@gmail.com">
-                Email
+                class="contact-link whatsapp"
+                id="whatsapp-link"
+                href="https://wa.me/628119240405?text=Hello%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect."
+                target="_blank"
+                rel="noopener">
+                WhatsApp
             </a>
 
+            <!-- Gmail Web -->
+            <a
+                class="contact-link"
+                href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=avril.rahmannur05%40gmail.com&amp;su=Portfolio%20Inquiry&amp;body=Hello%20Avril%2C%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20connect."
+                target="_blank"
+                rel="noopener">
+                Email Me
+            </a>
+
+            <!-- LinkedIn -->
             <a
                 class="contact-link"
                 href="https://www.linkedin.com/in/muhammad-avril-rahmannur/"
@@ -619,6 +639,7 @@
                 LinkedIn
             </a>
 
+            <!-- GitHub -->
             <a
                 class="contact-link"
                 href="https://github.com/avrilrahmannur"
@@ -629,10 +650,23 @@
 
         </div>
 
+        <p class="email-fallback">
+            Prefer another email application?
+            <a href="mailto:avril.rahmannur05@gmail.com">
+                Open your email app
+            </a>
+        </p>
+
     </section>
 
-</div>
+</main>
 
+<footer>
+    © 2026 Muhammad Avril Rahmannur
+</footer>
+
+
+<!-- PDF VIEWER -->
 
 <script type="module">
 
@@ -663,13 +697,14 @@
     let resizeTimer = null;
 
     function showError(error) {
-        console.error("PDF loading error:", error);
+
+        console.error("PDF error:", error);
 
         canvas.hidden = true;
         message.hidden = false;
 
         message.textContent =
-            "Preview unavailable. Please use Open PDF above.";
+            "PDF preview unavailable. Please use Open PDF above.";
 
         pageStatus.textContent = "Preview unavailable";
 
@@ -699,7 +734,7 @@
 
             const availableWidth = Math.max(
                 200,
-                stage.clientWidth - 24
+                stage.clientWidth - 20
             );
 
             const scale =
@@ -722,23 +757,17 @@
                 viewport.height * outputScale
             );
 
-            canvas.style.width =
-                viewport.width + "px";
-
-            canvas.style.height =
-                viewport.height + "px";
-
-            canvas.style.maxWidth = "100%";
-
-            context.setTransform(
-                outputScale, 0,
-                0, outputScale,
-                0, 0
-            );
+            canvas.style.width = viewport.width + "px";
+            canvas.style.height = viewport.height + "px";
 
             renderTask = page.render({
                 canvasContext: context,
-                viewport: viewport
+                viewport: viewport,
+                transform: [
+                    outputScale, 0,
+                    0, outputScale,
+                    0, 0
+                ]
             });
 
             await renderTask.promise;
@@ -758,7 +787,9 @@
 
         } catch (error) {
 
-            if (error.name === "RenderingCancelledException") {
+            if (
+                error.name === "RenderingCancelledException"
+            ) {
                 return;
             }
 
