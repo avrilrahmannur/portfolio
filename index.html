@@ -4,22 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0b0d12">
-    <meta name="description" content="Muhammad Avril Rahmannur | Electrical Engineering Portfolio">
+    <meta name="theme-color" content="#24252b">
+    <meta name="description" content="Muhammad Avril Rahmannur - Electrical Engineering Portfolio">
 
-    <title>Muhammad Avril Rahmannur | Engineering Portfolio</title>
+    <title>Muhammad Avril Rahmannur | Portfolio</title>
 
     <style>
         :root {
-            --bg: #0b0d12;
-            --surface: rgba(255, 255, 255, 0.055);
-            --surface-hover: rgba(255, 255, 255, 0.09);
-            --border: rgba(255, 255, 255, 0.11);
-            --text: #f1f2f5;
-            --muted: #a2a6b1;
-            --accent: #c77970;
-            --accent-soft: rgba(199, 121, 112, 0.13);
-            --max-width: 1120px;
+            --background: #24252b;
+            --text: #f7f5f5;
+            --muted: #c6c5cb;
+            --accent: #d18b83;
+            --glass: rgba(255, 255, 255, 0.105);
+            --glass-border: rgba(255, 255, 255, 0.24);
         }
 
         * {
@@ -28,154 +25,115 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 90px;
         }
 
         body {
             margin: 0;
             min-height: 100vh;
-            background:
-                radial-gradient(
-                    circle at 12% 5%,
-                    rgba(139, 66, 76, 0.17),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 88% 38%,
-                    rgba(70, 82, 125, 0.13),
-                    transparent 32%
-                ),
-                var(--bg);
+            padding: 55px 20px;
+            background: var(--background);
             color: var(--text);
-            font-family: Inter, "Segoe UI", Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont,
+                "Segoe UI", Arial, sans-serif;
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        body::before {
-            content: "";
+        /* BACKGROUND LIGHT AND BLUR */
+
+        .background-effects {
             position: fixed;
             inset: 0;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.13;
-            background-image:
-                linear-gradient(
-                    rgba(255,255,255,0.035) 1px,
-                    transparent 1px
+            z-index: -2;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    ellipse at 12% 15%,
+                    rgba(195, 112, 106, 0.30),
+                    transparent 38%
+                ),
+                radial-gradient(
+                    ellipse at 90% 45%,
+                    rgba(122, 133, 164, 0.28),
+                    transparent 38%
                 ),
                 linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.035) 1px,
-                    transparent 1px
+                    140deg,
+                    #313139,
+                    #202127 60%,
+                    #292a32
                 );
-            background-size: 48px 48px;
         }
 
-        a {
-            color: inherit;
-            text-decoration: none;
+        .background-effects::before,
+        .background-effects::after {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.5;
         }
 
-        button {
-            font: inherit;
+        .background-effects::before {
+            top: 10%;
+            left: -180px;
+            background: #9d6465;
         }
 
-        .container {
-            width: min(var(--max-width), calc(100% - 48px));
+        .background-effects::after {
+            right: -180px;
+            top: 55%;
+            background: #616b89;
+        }
+
+        /* PAGE */
+
+        .page {
+            width: 100%;
+            max-width: 920px;
             margin: 0 auto;
         }
 
-        .glass {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-radius: 18px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.14);
-        }
-
-        /* NAVIGATION */
-
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(11, 13, 18, 0.78);
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        .navigation {
-            min-height: 76px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .brand {
-            font-size: 15px;
-            font-weight: 750;
-            letter-spacing: 1.2px;
-            white-space: nowrap;
-        }
-
-        .brand span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 26px;
-        }
-
-        .nav-links a {
-            color: var(--muted);
-            font-size: 13px;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: white;
-        }
-
-        /* HERO */
-
-        .hero {
-            padding: 95px 0 55px;
-        }
-
-        .hero-card {
+        .section-card {
             position: relative;
             overflow: hidden;
-            padding: clamp(30px, 6vw, 72px);
-            background:
-                linear-gradient(
-                    125deg,
-                    rgba(255,255,255,0.085),
-                    rgba(255,255,255,0.025)
-                );
+            margin-bottom: 25px;
+            padding: clamp(27px, 5vw, 48px);
+            border: 1px solid var(--glass-border);
+            border-radius: 25px;
+
+            background: var(--glass);
+
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+
+            box-shadow:
+                0 24px 65px rgba(0, 0, 0, 0.19),
+                inset 0 1px 1px rgba(255, 255, 255, 0.22),
+                inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+
+            scroll-margin-top: 25px;
         }
 
-        .hero-card::after {
+        .section-card::before {
             content: "";
             position: absolute;
-            width: 350px;
-            height: 350px;
-            right: -140px;
-            top: -160px;
-            background: rgba(199, 121, 112, 0.18);
-            filter: blur(85px);
-            border-radius: 50%;
-            pointer-events: none;
+            top: 0;
+            left: 8%;
+            right: 8%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.55),
+                transparent
+            );
         }
 
         .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            margin: 0 0 16px;
             color: var(--accent);
             font-size: 11px;
             font-weight: 750;
@@ -183,28 +141,49 @@
             text-transform: uppercase;
         }
 
-        .eyebrow::before {
-            content: "";
-            width: 23px;
-            height: 1px;
-            background: var(--accent);
-        }
-
         h1 {
-            max-width: 850px;
-            margin: 22px 0 15px;
-            font-size: clamp(37px, 6vw, 66px);
-            line-height: 1.12;
-            letter-spacing: -2.5px;
+            margin: 0;
+            max-width: 760px;
+            font-size: clamp(35px, 7vw, 59px);
+            line-height: 1.13;
+            letter-spacing: -2px;
         }
 
-        .hero-description {
-            max-width: 690px;
+        h2 {
+            margin: 0;
+            font-size: clamp(25px, 4vw, 34px);
+            line-height: 1.25;
+            letter-spacing: -0.8px;
+        }
+
+        p {
             color: var(--muted);
-            font-size: 16px;
         }
 
-        .hero-actions {
+        .role {
+            margin: 16px 0 5px;
+            color: #f0e9e8;
+            font-size: 17px;
+            font-weight: 550;
+        }
+
+        .specialization {
+            margin: 0 0 25px;
+            color: var(--accent);
+            font-size: 13px;
+            letter-spacing: 0.2px;
+        }
+
+        .intro {
+            max-width: 700px;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        /* BUTTONS */
+
+        .actions {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
@@ -217,441 +196,261 @@
             justify-content: center;
             min-height: 45px;
             padding: 0 19px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            background: rgba(255,255,255,0.045);
+            border: 1px solid rgba(255,255,255,0.28);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.10);
+            color: #fff;
             font-size: 13px;
             font-weight: 650;
+            text-decoration: none;
             transition: 0.2s ease;
         }
 
         .button:hover {
-            background: var(--surface-hover);
-            border-color: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.19);
+            border-color: rgba(255,255,255,0.5);
             transform: translateY(-2px);
         }
 
         .button.primary {
-            background: var(--accent);
-            color: #171214;
-            border-color: var(--accent);
+            background: rgba(209, 139, 131, 0.85);
+            border-color: rgba(255,255,255,0.22);
+            color: #241a1a;
         }
 
         .button.primary:hover {
-            background: #d38b81;
+            background: #e0a098;
         }
 
-        /* QUICK INFORMATION */
+        /* PORTFOLIO */
 
-        .quick-info {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-top: 20px;
-        }
-
-        .info-card {
-            padding: 20px;
-        }
-
-        .info-value {
-            display: block;
-            font-size: 25px;
-            font-weight: 750;
-            letter-spacing: -0.5px;
-        }
-
-        .info-label {
-            color: var(--muted);
-            font-size: 12px;
-        }
-
-        /* GENERAL SECTIONS */
-
-        main {
-            padding-bottom: 70px;
-        }
-
-        .section {
-            margin-top: 24px;
-            padding: clamp(24px, 4vw, 40px);
-            scroll-margin-top: 100px;
-        }
-
-        .section-number {
-            color: var(--accent);
-            font-size: 11px;
-            font-weight: 750;
-            letter-spacing: 2px;
-        }
-
-        h2 {
-            margin: 7px 0 15px;
-            font-size: clamp(24px, 3vw, 31px);
-            letter-spacing: -0.7px;
-        }
-
-        .section-description {
-            max-width: 780px;
-            color: var(--muted);
+        .portfolio-description {
+            margin: 13px 0 22px;
             font-size: 14px;
         }
 
-        /* ABOUT */
-
-        .about-content {
-            max-width: 850px;
-        }
-
-        .about-content p {
-            color: #c5c7ce;
-            font-size: 14px;
-        }
-
-        /* AREAS OF INTEREST */
-
-        .interest-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 13px;
-            margin-top: 26px;
-        }
-
-        .interest-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            min-height: 76px;
-            padding: 17px;
-            border: 1px solid var(--border);
-            border-radius: 11px;
-            background: rgba(255,255,255,0.035);
-            transition: 0.2s ease;
-        }
-
-        .interest-card:hover {
-            background: var(--surface-hover);
-            border-color: rgba(199,121,112,0.4);
-            transform: translateY(-2px);
-        }
-
-        .interest-marker {
-            width: 8px;
-            height: 8px;
-            flex-shrink: 0;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 13px rgba(199,121,112,0.5);
-        }
-
-        .interest-card span:last-child {
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        /* EXPERIENCE AND TOOLS */
-
-        .experience-card {
-            margin-top: 22px;
-            padding: 22px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: rgba(255,255,255,0.035);
-        }
-
-        .experience-card h3 {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        .experience-meta {
-            margin: 4px 0 12px;
-            color: var(--accent);
-            font-size: 12px;
-        }
-
-        .experience-card p {
-            margin-bottom: 0;
-            color: var(--muted);
-            font-size: 13px;
-        }
-
-        .tool-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
-            margin-top: 20px;
-        }
-
-        .tool {
-            padding: 7px 12px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: #c6c8d0;
-            background: rgba(255,255,255,0.035);
-            font-size: 12px;
-        }
-
-        /* PDF PORTFOLIO */
-
-        .portfolio-card {
-            margin-top: 22px;
+        .pdf-shell {
             overflow: hidden;
-            border: 1px solid var(--border);
-            border-radius: 13px;
-            background: rgba(0,0,0,0.22);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 17px;
+            background: rgba(20,21,26,0.38);
+            box-shadow:
+                inset 0 1px rgba(255,255,255,0.14),
+                0 12px 35px rgba(0,0,0,0.13);
         }
 
-        .pdf-header {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 13px;
-            padding: 16px 19px;
-            border-bottom: 1px solid var(--border);
-            background: rgba(255,255,255,0.035);
-        }
-
-        .pdf-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #75bd91;
-            box-shadow: 0 0 10px rgba(117,189,145,0.5);
-        }
-
-        .pdf-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
-        }
-
-        .pdf-links a {
-            padding: 7px 11px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            color: #e8e8ec;
-            font-size: 11px;
-            transition: 0.2s ease;
-        }
-
-        .pdf-links a:hover {
-            background: var(--surface-hover);
-            border-color: var(--accent);
-        }
-
-        .pdf-toolbar {
+        .pdf-topbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
-            padding: 12px 16px;
-            border-bottom: 1px solid var(--border);
+            padding: 15px 17px;
+            border-bottom: 1px solid rgba(255,255,255,0.14);
+            background: rgba(255,255,255,0.055);
         }
 
-        .pdf-controls {
+        .pdf-label {
             display: flex;
             align-items: center;
             gap: 9px;
+            color: #f0eeee;
+            font-size: 12px;
+            font-weight: 650;
         }
 
-        .pdf-controls button {
-            min-height: 34px;
-            padding: 5px 11px;
-            color: #e7e8eb;
+        .pdf-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #8fc8a4;
+            box-shadow: 0 0 10px rgba(143,200,164,0.6);
+        }
+
+        .pdf-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pdf-actions a {
+            padding: 7px 11px;
+            border: 1px solid rgba(255,255,255,0.20);
+            border-radius: 8px;
+            color: #f5eeee;
             background: rgba(255,255,255,0.06);
-            border: 1px solid var(--border);
-            border-radius: 6px;
+            font-size: 11px;
+            text-decoration: none;
+        }
+
+        .pdf-actions a:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .pdf-toolbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            padding: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .pdf-toolbar button {
+            padding: 7px 13px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: white;
+            background: rgba(255,255,255,0.08);
             cursor: pointer;
             font-size: 12px;
         }
 
-        .pdf-controls button:hover:not(:disabled) {
-            background: var(--accent-soft);
-            border-color: var(--accent);
+        .pdf-toolbar button:hover:not(:disabled) {
+            background: rgba(255,255,255,0.19);
         }
 
-        .pdf-controls button:disabled {
+        .pdf-toolbar button:disabled {
             opacity: 0.35;
             cursor: not-allowed;
         }
 
         #page-status {
-            min-width: 90px;
+            min-width: 95px;
             color: var(--muted);
+            font-size: 12px;
             text-align: center;
-            font-size: 11px;
         }
 
         .pdf-stage {
-            min-height: 350px;
-            padding: 20px 14px;
+            width: 100%;
+            min-height: 300px;
+            padding: 20px 12px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            overflow: auto;
-            background:
-                radial-gradient(
-                    circle at 50% 15%,
-                    rgba(255,255,255,0.055),
-                    transparent 65%
-                ),
-                #10131a;
+            overflow: hidden;
+            background: rgba(10,11,15,0.20);
         }
 
         #pdf-canvas {
             display: block;
             max-width: 100%;
             height: auto;
+            border-radius: 3px;
             background: white;
-            border-radius: 2px;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.32);
         }
 
-        .pdf-message {
-            padding: 40px 15px;
+        #pdf-message {
+            padding: 55px 15px;
             color: var(--muted);
-            text-align: center;
             font-size: 13px;
+            text-align: center;
         }
 
         .pdf-note {
-            padding: 12px 17px;
             margin: 0;
-            color: var(--muted);
-            border-top: 1px solid var(--border);
+            padding: 13px 16px;
+            border-top: 1px solid rgba(255,255,255,0.12);
             font-size: 11px;
         }
 
         /* CONTACT */
 
+        .contact-description {
+            max-width: 650px;
+            margin: 13px 0 25px;
+            font-size: 14px;
+        }
+
         .contact-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 22px;
+            gap: 11px;
         }
 
-        .contact-links a {
-            padding: 10px 15px;
-            color: #e5e5ea;
-            border: 1px solid var(--border);
-            border-radius: 7px;
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 11px 16px;
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 11px;
+            background: rgba(255,255,255,0.07);
+            color: #fff;
             font-size: 13px;
+            text-decoration: none;
+            transition: 0.2s ease;
         }
 
-        .contact-links a:hover {
-            color: white;
-            border-color: var(--accent);
-            background: var(--accent-soft);
+        .contact-link:hover {
+            background: rgba(255,255,255,0.17);
+            border-color: rgba(255,255,255,0.42);
+            transform: translateY(-2px);
         }
 
-        /* FOOTER */
+        /* MOBILE */
 
-        footer {
-            padding: 28px 20px;
-            color: var(--muted);
-            border-top: 1px solid var(--border);
-            text-align: center;
-            font-size: 11px;
-        }
-
-        /* RESPONSIVE DESIGN */
-
-        @media (max-width: 700px) {
-            .container {
-                width: min(100% - 30px, var(--max-width));
+        @media (max-width: 600px) {
+            body {
+                padding: 25px 13px;
             }
 
-            .navigation {
-                min-height: auto;
-                padding: 17px 0;
-                align-items: flex-start;
-                flex-direction: column;
-                gap: 13px;
-            }
-
-            .nav-links {
-                width: 100%;
-                gap: 19px;
-                overflow-x: auto;
-                white-space: nowrap;
-                padding-bottom: 3px;
-            }
-
-            .nav-links a {
-                font-size: 12px;
-            }
-
-            .hero {
-                padding-top: 45px;
-            }
-
-            .hero-card {
-                padding: 29px 23px;
+            .section-card {
+                margin-bottom: 17px;
+                padding: 26px 21px;
+                border-radius: 21px;
             }
 
             h1 {
+                font-size: clamp(34px, 10vw, 47px);
                 letter-spacing: -1.5px;
             }
 
-            .hero-description {
-                font-size: 14px;
+            .role {
+                font-size: 15px;
             }
 
-            .quick-info {
-                gap: 8px;
+            .specialization {
+                font-size: 12px;
+                line-height: 1.7;
             }
 
-            .info-card {
-                padding: 13px 10px;
+            .intro {
+                font-size: 13px;
             }
 
-            .info-value {
-                font-size: 19px;
+            .actions {
+                margin-top: 22px;
             }
 
-            .info-label {
-                font-size: 10px;
+            .button {
+                min-height: 43px;
+                padding: 0 14px;
+                font-size: 12px;
             }
 
-            .interest-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 23px 19px;
-            }
-
-            .pdf-header {
+            .pdf-topbar {
                 align-items: flex-start;
                 flex-direction: column;
-            }
-
-            .pdf-toolbar {
-                align-items: flex-start;
-                flex-direction: column;
-            }
-
-            .pdf-controls {
-                width: 100%;
-                justify-content: space-between;
             }
 
             .pdf-stage {
+                min-height: 250px;
                 padding: 12px 8px;
-                min-height: 280px;
+            }
+
+            .pdf-toolbar {
+                gap: 9px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .contact-link {
+                justify-content: center;
             }
         }
 
@@ -660,10 +459,8 @@
                 scroll-behavior: auto;
             }
 
-            *,
-            *::before,
-            *::after {
-                transition-duration: 0.01ms !important;
+            *, *::before, *::after {
+                transition: none !important;
             }
         }
     </style>
@@ -671,275 +468,174 @@
 
 <body>
 
-<header class="site-header">
-    <div class="container navigation">
-        <a class="brand" href="#home">
-            AR <span>/</span> ENGINEERING
-        </a>
+<div class="background-effects"></div>
 
-        <nav class="nav-links" aria-label="Main navigation">
-            <a href="#about">About</a>
-            <a href="#interests">Expertise</a>
-            <a href="#experience">Experience</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </div>
-</header>
+<div class="page">
 
-<div class="container">
+    <!-- SECTION 1: INTRODUCTION -->
 
-    <section class="hero" id="home">
-        <div class="hero-card glass">
-            <div class="eyebrow">
-                Electrical Engineering Undergraduate
-            </div>
+    <section class="section-card" id="about">
 
-            <h1>Muhammad Avril Rahmannur</h1>
+        <div class="eyebrow">01 / ABOUT ME</div>
 
-            <p class="hero-description">
-                Power Systems · Industrial Automation · Renewable Energy
-            </p>
+        <h1>Muhammad Avril Rahmannur</h1>
 
-            <p class="hero-description">
-                Electrical Engineering student at Universitas Pendidikan
-                Indonesia, interested in developing reliable, efficient,
-                and well-integrated electrical systems.
-            </p>
+        <p class="role">
+            Electrical Engineering Student
+        </p>
 
-            <div class="hero-actions">
-                <a class="button primary" href="#portfolio">
-                    Explore My Portfolio
-                </a>
+        <p class="specialization">
+            Power Systems · Industrial Automation · Renewable Energy
+        </p>
 
-                <a class="button" href="#contact">
-                    Get in Touch
-                </a>
-            </div>
+        <p class="intro">
+            Electrical Engineering undergraduate at Universitas
+            Pendidikan Indonesia (GPA: 3.74/4.00), with an interest
+            in power systems, electrical installations, industrial
+            automation, and renewable energy systems.
+
+            Through academic projects and internship experience
+            at PT PLN (Persero) UID Banten, I have developed
+            technical and analytical skills in engineering modeling,
+            system analysis, data processing, and technical reporting.
+        </p>
+
+        <div class="actions">
+            <a class="button primary" href="#portfolio">
+                View My Portfolio
+            </a>
+
+            <a class="button" href="#contact">
+                Contact Me
+            </a>
         </div>
 
-        <div class="quick-info">
-            <div class="info-card glass">
-                <span class="info-value">3.74</span>
-                <span class="info-label">GPA / 4.00</span>
-            </div>
-
-            <div class="info-card glass">
-                <span class="info-value">UPI</span>
-                <span class="info-label">Universitas Pendidikan Indonesia</span>
-            </div>
-
-            <div class="info-card glass">
-                <span class="info-value">PLN</span>
-                <span class="info-label">Engineering Internship</span>
-            </div>
-        </div>
     </section>
 
-    <main>
 
-        <section class="section glass" id="about">
-            <div class="section-number">01 / PROFILE</div>
-            <h2>About Me</h2>
+    <!-- SECTION 2: PORTFOLIO -->
 
-            <div class="about-content">
-                <p>
-                    Electrical Engineering undergraduate at Universitas
-                    Pendidikan Indonesia (GPA: 3.74/4.00), with an interest
-                    in power systems, electrical installations, industrial
-                    automation, and renewable energy systems.
-                </p>
+    <section class="section-card" id="portfolio">
 
-                <p>
-                    Through academic projects and internship experience
-                    at PT PLN (Persero) UID Banten, I have developed
-                    technical and analytical skills in engineering
-                    modeling, system analysis, data processing,
-                    and technical reporting.
-                </p>
+        <div class="eyebrow">02 / SELECTED WORK</div>
+
+        <h2>Engineering Portfolio</h2>
+
+        <p class="portfolio-description">
+            Explore my academic and technical projects in electrical
+            engineering, power systems, industrial automation,
+            and renewable energy.
+        </p>
+
+        <div class="pdf-shell">
+
+            <div class="pdf-topbar">
+
+                <div class="pdf-label">
+                    <span class="pdf-dot"></span>
+                    PORTFOLIO DOCUMENT
+                </div>
+
+                <div class="pdf-actions">
+                    <a
+                        href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
+                        target="_blank"
+                        rel="noopener">
+                        Open PDF
+                    </a>
+
+                    <a
+                        href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
+                        download>
+                        Download
+                    </a>
+                </div>
+
             </div>
-        </section>
 
-        <section class="section glass" id="interests">
-            <div class="section-number">02 / ENGINEERING FOCUS</div>
-            <h2>Technical Interests</h2>
+            <div class="pdf-toolbar">
 
-            <p class="section-description">
-                Areas of electrical engineering that I have explored
-                through academic projects and technical learning.
+                <button id="previous-page" type="button" disabled>
+                    Previous
+                </button>
+
+                <span id="page-status">Loading...</span>
+
+                <button id="next-page" type="button" disabled>
+                    Next
+                </button>
+
+            </div>
+
+            <div class="pdf-stage" id="pdf-stage">
+
+                <div id="pdf-message" role="status" aria-live="polite">
+                    Loading portfolio...
+                </div>
+
+                <canvas id="pdf-canvas" hidden
+                    aria-label="Portfolio PDF page">
+                </canvas>
+
+            </div>
+
+            <p class="pdf-note">
+                Browse the document using the page controls above.
+                For the full document, open or download the PDF.
             </p>
 
-            <div class="interest-grid">
-                <div class="interest-card">
-                    <span class="interest-marker"></span>
-                    <span>Power Systems Engineering</span>
-                </div>
+        </div>
 
-                <div class="interest-card">
-                    <span class="interest-marker"></span>
-                    <span>Electrical Installation and Distribution</span>
-                </div>
+    </section>
 
-                <div class="interest-card">
-                    <span class="interest-marker"></span>
-                    <span>Industrial Automation and PLC</span>
-                </div>
 
-                <div class="interest-card">
-                    <span class="interest-marker"></span>
-                    <span>SCADA and HMI Systems</span>
-                </div>
+    <!-- SECTION 3: CONTACT -->
 
-                <div class="interest-card">
-                    <span class="interest-marker"></span>
-                    <span>Renewable Energy Systems</span>
-                </div>
+    <section class="section-card" id="contact">
 
-                <div class="interest-card">
-                    <span class="interest-marker"></span>
-                    <span>Power System Analysis</span>
-                </div>
-            </div>
-        </section>
+        <div class="eyebrow">03 / CONTACT</div>
 
-        <section class="section glass" id="experience">
-            <div class="section-number">03 / EXPERIENCE & TOOLS</div>
-            <h2>Engineering Experience</h2>
+        <h2>Let's Connect</h2>
 
-            <div class="experience-card">
-                <h3>Engineering Intern</h3>
+        <p class="contact-description">
+            Feel free to reach out regarding engineering,
+            academic projects, professional opportunities,
+            or collaboration.
+        </p>
 
-                <div class="experience-meta">
-                    PT PLN (Persero) UID Banten · July – September 2026
-                </div>
+        <div class="contact-links">
 
-                <p>
-                    Worked on electricity distribution reliability
-                    data processing, performance dashboard development,
-                    and observation of distribution substation
-                    maintenance and post-maintenance assessments.
-                </p>
-            </div>
+            <a
+                class="contact-link"
+                href="mailto:avril.rahmannur05@gmail.com">
+                Email
+            </a>
 
-            <div class="tool-list">
-                <span class="tool">DIgSILENT PowerFactory</span>
-                <span class="tool">HOMER Pro</span>
-                <span class="tool">Omron CX-Programmer</span>
-                <span class="tool">CX-Designer</span>
-                <span class="tool">AutoCAD</span>
-                <span class="tool">Microsoft Excel</span>
-                <span class="tool">Power Query</span>
-                <span class="tool">Looker Studio</span>
-            </div>
-        </section>
+            <a
+                class="contact-link"
+                href="https://www.linkedin.com/in/muhammad-avril-rahmannur/"
+                target="_blank"
+                rel="noopener">
+                LinkedIn
+            </a>
 
-        <section class="section glass" id="portfolio">
-            <div class="section-number">04 / SELECTED WORK</div>
-            <h2>Engineering Portfolio</h2>
+            <a
+                class="contact-link"
+                href="https://github.com/avrilrahmannur"
+                target="_blank"
+                rel="noopener">
+                GitHub
+            </a>
 
-            <p class="section-description">
-                Explore my academic and technical projects, covering
-                electrical installation planning, power system analysis,
-                industrial automation, and renewable energy systems.
-            </p>
+        </div>
 
-            <div class="portfolio-card">
+    </section>
 
-                <div class="pdf-header">
-                    <div class="pdf-title">
-                        <span class="status-dot"></span>
-                        ENGINEERING PORTFOLIO / PDF
-                    </div>
-
-                    <div class="pdf-links">
-                        <a
-                            href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
-                            target="_blank"
-                            rel="noopener">
-                            Open PDF
-                        </a>
-
-                        <a
-                            href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
-                            download>
-                            Download PDF
-                        </a>
-                    </div>
-                </div>
-
-                <div class="pdf-toolbar">
-                    <div class="pdf-controls">
-                        <button id="prev-page" type="button" disabled>
-                            Previous
-                        </button>
-
-                        <span id="page-status">Loading PDF...</span>
-
-                        <button id="next-page" type="button" disabled>
-                            Next
-                        </button>
-                    </div>
-                </div>
-
-                <div class="pdf-stage" id="pdf-stage">
-                    <div class="pdf-message" id="pdf-message"
-                         role="status" aria-live="polite">
-                        Loading portfolio document...
-                    </div>
-
-                    <canvas id="pdf-canvas"
-                            aria-label="Portfolio PDF page"
-                            hidden>
-                    </canvas>
-                </div>
-
-                <p class="pdf-note">
-                    Use Previous and Next to browse the document.
-                    Open or download the PDF for the full document experience.
-                </p>
-
-            </div>
-        </section>
-
-        <section class="section glass" id="contact">
-            <div class="section-number">05 / CONTACT</div>
-            <h2>Let's Connect</h2>
-
-            <p class="section-description">
-                Feel free to contact me regarding engineering,
-                academic projects, professional opportunities,
-                or collaboration.
-            </p>
-
-            <div class="contact-links">
-                <a href="mailto:avril.rahmannur05@gmail.com">
-                    Email
-                </a>
-
-                <a
-                    href="https://www.linkedin.com/in/muhammad-avril-rahmannur/"
-                    target="_blank"
-                    rel="noopener">
-                    LinkedIn
-                </a>
-
-                <a
-                    href="https://github.com/avrilrahmannur"
-                    target="_blank"
-                    rel="noopener">
-                    GitHub
-                </a>
-            </div>
-        </section>
-
-    </main>
 </div>
 
-<footer>
-    © 2026 Muhammad Avril Rahmannur · Engineering Portfolio
-</footer>
 
 <script type="module">
+
     const PDF_URL =
         "Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf";
 
@@ -949,27 +645,32 @@
         `https://cdn.jsdelivr.net/npm/pdfjs-dist@${PDFJS_VERSION}`;
 
     const canvas = document.getElementById("pdf-canvas");
-    const context = canvas.getContext("2d", { alpha: false });
+    const context = canvas.getContext("2d");
 
     const stage = document.getElementById("pdf-stage");
     const message = document.getElementById("pdf-message");
     const pageStatus = document.getElementById("page-status");
 
-    const previousButton = document.getElementById("prev-page");
-    const nextButton = document.getElementById("next-page");
+    const previousButton =
+        document.getElementById("previous-page");
+
+    const nextButton =
+        document.getElementById("next-page");
 
     let pdfDocument = null;
     let currentPage = 1;
-    let renderQueue = Promise.resolve();
+    let renderTask = null;
     let resizeTimer = null;
 
     function showError(error) {
-        console.error("PDF viewer error:", error);
+        console.error("PDF loading error:", error);
 
         canvas.hidden = true;
         message.hidden = false;
+
         message.textContent =
-            "The PDF preview could not be loaded. Please use the Open PDF link above.";
+            "Preview unavailable. Please use Open PDF above.";
+
         pageStatus.textContent = "Preview unavailable";
 
         previousButton.disabled = true;
@@ -977,48 +678,72 @@
     }
 
     async function renderPage() {
+
         if (!pdfDocument) return;
 
+        if (renderTask) {
+            renderTask.cancel();
+            renderTask = null;
+        }
+
         try {
+
             message.hidden = false;
-            message.textContent = "Rendering page " + currentPage + "...";
+            message.textContent = "Loading page...";
 
             const page = await pdfDocument.getPage(currentPage);
 
-            const originalViewport = page.getViewport({ scale: 1 });
+            const baseViewport = page.getViewport({
+                scale: 1
+            });
 
             const availableWidth = Math.max(
-                220,
-                stage.clientWidth - 30
+                200,
+                stage.clientWidth - 24
             );
 
-            const scale = availableWidth / originalViewport.width;
+            const scale =
+                availableWidth / baseViewport.width;
 
-            const viewport = page.getViewport({ scale });
+            const viewport = page.getViewport({
+                scale: scale
+            });
 
             const outputScale = Math.min(
                 window.devicePixelRatio || 1,
                 2
             );
 
-            canvas.width = Math.floor(viewport.width * outputScale);
-            canvas.height = Math.floor(viewport.height * outputScale);
+            canvas.width = Math.floor(
+                viewport.width * outputScale
+            );
 
-            canvas.style.width = viewport.width + "px";
-            canvas.style.height = viewport.height + "px";
+            canvas.height = Math.floor(
+                viewport.height * outputScale
+            );
 
-            const renderContext = {
+            canvas.style.width =
+                viewport.width + "px";
+
+            canvas.style.height =
+                viewport.height + "px";
+
+            canvas.style.maxWidth = "100%";
+
+            context.setTransform(
+                outputScale, 0,
+                0, outputScale,
+                0, 0
+            );
+
+            renderTask = page.render({
                 canvasContext: context,
-                viewport: viewport,
-                transform: [
-                    outputScale, 0,
-                    0, outputScale,
-                    0, 0
-                ],
-                background: "rgb(255,255,255)"
-            };
+                viewport: viewport
+            });
 
-            await page.render(renderContext).promise;
+            await renderTask.promise;
+
+            renderTask = null;
 
             canvas.hidden = false;
             message.hidden = true;
@@ -1027,72 +752,80 @@
                 `Page ${currentPage} of ${pdfDocument.numPages}`;
 
             previousButton.disabled = currentPage <= 1;
+
             nextButton.disabled =
                 currentPage >= pdfDocument.numPages;
 
         } catch (error) {
+
+            if (error.name === "RenderingCancelledException") {
+                return;
+            }
+
             showError(error);
         }
     }
 
-    function requestRender() {
-        renderQueue = renderQueue
-            .then(renderPage)
-            .catch(showError);
-    }
-
     previousButton.addEventListener("click", () => {
+
         if (currentPage > 1) {
             currentPage--;
-            requestRender();
+            renderPage();
         }
+
     });
 
     nextButton.addEventListener("click", () => {
-        if (pdfDocument && currentPage < pdfDocument.numPages) {
+
+        if (
+            pdfDocument &&
+            currentPage < pdfDocument.numPages
+        ) {
             currentPage++;
-            requestRender();
+            renderPage();
         }
+
     });
 
     window.addEventListener("resize", () => {
+
         clearTimeout(resizeTimer);
 
         resizeTimer = setTimeout(() => {
-            if (pdfDocument) {
-                requestRender();
-            }
+            renderPage();
         }, 250);
+
     });
 
     async function loadPDF() {
+
         try {
+
             const pdfjsLib = await import(
-                `${PDFJS_BASE}/build/pdf.min.mjs`
+                `${PDFJS_BASE}/build/pdf.mjs`
             );
 
             pdfjsLib.GlobalWorkerOptions.workerSrc =
-                `${PDFJS_BASE}/build/pdf.worker.min.mjs`;
+                `${PDFJS_BASE}/build/pdf.worker.mjs`;
 
             const loadingTask = pdfjsLib.getDocument({
-                url: PDF_URL,
-                cMapUrl: `${PDFJS_BASE}/cmaps/`,
-                cMapPacked: true,
-                standardFontDataUrl:
-                    `${PDFJS_BASE}/standard_fonts/`
+                url: PDF_URL
             });
 
             pdfDocument = await loadingTask.promise;
 
             currentPage = 1;
-            requestRender();
+
+            await renderPage();
 
         } catch (error) {
             showError(error);
         }
+
     }
 
     loadPDF();
+
 </script>
 
 </body>
