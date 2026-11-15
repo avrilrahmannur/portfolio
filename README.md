@@ -1,30 +1,34 @@
-
 # Muhammad Avril Rahmannur
 
-**Electrical Engineering Student | Power Systems | Industrial Automation**
+**Electrical Engineering Student | Power Systems | Industrial Automation | Renewable Energy**
 
-Electrical Engineering student at Universitas Pendidikan Indonesia with an interest in power systems, industrial automation, and renewable energy technologies.
+Electrical Engineering undergraduate at Universitas Pendidikan Indonesia (GPA: 3.74/4.00), with an interest in power systems, electrical installations, industrial automation, and renewable energy systems.
+
+Through academic projects and internship experience at PT PLN (Persero) UID Banten, I have developed technical and analytical skills in electrical engineering, engineering modeling, system analysis, data processing, and technical reporting.
 
 ## Portfolio
 
-This repository contains my selected academic and technical projects in electrical engineering.
+This repository presents selected academic and technical projects demonstrating my experience and learning in electrical engineering.
 
 **[View My Full Portfolio (PDF)](Portfolio_Muhammad%20Avril%20Rahmannur.pdf)**
 
 ## Areas of Interest
 
 - Power Systems Engineering
-- Industrial Automation
-- PLC & SCADA Systems
-- Renewable Energy Systems
 - Electrical Installation and Distribution
+- Industrial Automation
+- PLC and HMI Systems
+- Renewable Energy Systems
+- SCADA Systems
 
 ## Technical Skills
 
-- **Power System Analysis:** DIgSILENT PowerFactory
-- **Industrial Automation:** CX-Programmer, PLC Programming, SCADA
-- **Renewable Energy:** HOMER Pro
-- **Electrical Design:** AutoCAD
+- **Power System Analysis:** DIgSILENT PowerFactory, Load Flow Analysis
+- **Industrial Automation:** Omron CX-Programmer, PLC Programming, Ladder Logic, I/O Mapping
+- **HMI Development:** Omron CX-Designer
+- **Renewable Energy:** HOMER Pro, Solar PV–BESS Hybrid System Modeling
+- **Electrical Design:** AutoCAD, Electrical Installation Planning
+- **Data Processing & Visualization:** Microsoft Excel, Power Query, Looker Studio
 
 ## Contact
 
