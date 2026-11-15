@@ -1,31 +1,357 @@
 
-<section>
-    <h2>My Portfolio</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Muhammad Avril Rahmannur - Electrical Engineering Portfolio">
+    <title>Muhammad Avril Rahmannur | Engineering Portfolio</title>
 
-    <p>
-        Explore my academic and technical projects
-        through my engineering portfolio.
-    </p>
+    <style>
+        :root {
+            --background: #f7f5f2;
+            --surface: #ffffff;
+            --dark: #252525;
+            --text: #292929;
+            --muted: #777777;
+            --accent: #a33b32;
+            --border: #e5e1dc;
+        }
 
-    <div style="width: 100%; height: 850px;">
-        <iframe
-            src="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
-            width="100%"
-            height="100%"
-            style="border: 1px solid #ddd; border-radius: 6px;"
-            title="Muhammad Avril Rahmannur Engineering Portfolio">
-        </iframe>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 25px 8%;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #d99a93;
+        }
+
+        .hero {
+            max-width: 1100px;
+            margin: auto;
+            padding: 75px 0 65px;
+        }
+
+        .hero-label {
+            color: #d99a93;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            line-height: 1.2;
+            margin: 15px 0;
+        }
+
+        .hero p {
+            color: #d0d0d0;
+            max-width: 700px;
+        }
+
+        .hero-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid #ffffff;
+            border-radius: 3px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .button.primary {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 25px;
+        }
+
+        section {
+            background: var(--surface);
+            padding: 32px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            scroll-margin-top: 25px;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin: 5px 0 18px;
+        }
+
+        .interest-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .interest-item {
+            padding: 15px;
+            background: var(--background);
+            border-left: 3px solid var(--accent);
+            font-size: 14px;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 850px;
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background: white;
+        }
+
+        .pdf-links {
+            margin-top: 18px;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        .pdf-links a {
+            font-weight: bold;
+            text-decoration: none;
+            margin-right: 15px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: #cccccc;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                padding: 20px;
+            }
+
+            nav {
+                align-items: flex-start;
+            }
+
+            nav a {
+                margin: 0 12px 0 0;
+            }
+
+            .hero {
+                padding: 55px 0;
+            }
+
+            main {
+                padding: 0 15px;
+                margin: 25px auto;
+            }
+
+            section {
+                padding: 22px;
+            }
+
+            .interest-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pdf-viewer {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <div class="logo">AVRIL RAHMANNUR</div>
+        <div>
+            <a href="#about">About</a>
+            <a href="#interests">Interests</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-label">ELECTRICAL ENGINEERING PORTFOLIO</div>
+
+        <h1>Muhammad Avril Rahmannur</h1>
+
+        <p>
+            Electrical Engineering Student
+            | Power Systems
+            | Industrial Automation
+            | Renewable Energy
+        </p>
+
+        <div class="hero-links">
+            <a class="button primary" href="#portfolio">View Portfolio</a>
+            <a class="button" href="#contact">Contact Me</a>
+        </div>
     </div>
+</header>
 
-    <p>
-        <a href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
-           target="_blank">
-            Open PDF in a new tab
-        </a>
-        |
-        <a href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
-           download>
-            Download Portfolio
-        </a>
-    </p>
-</section>
+<main>
+
+    <section id="about">
+        <div class="section-label">01 / PROFILE</div>
+        <h2>About Me</h2>
+
+        <p>
+            Electrical Engineering undergraduate at
+            Universitas Pendidikan Indonesia (GPA: 3.74/4.00),
+            with an interest in power systems, electrical
+            installations, industrial automation, and
+            renewable energy systems.
+        </p>
+
+        <p>
+            Through academic projects and internship experience
+            at PT PLN (Persero) UID Banten, I have developed
+            technical and analytical skills in engineering
+            modeling, system analysis, data processing,
+            and technical reporting.
+        </p>
+    </section>
+
+    <section id="interests">
+        <div class="section-label">02 / EXPERTISE</div>
+        <h2>Technical Interests</h2>
+
+        <div class="interest-grid">
+            <div class="interest-item">Power Systems Engineering</div>
+            <div class="interest-item">Electrical Installation and Distribution</div>
+            <div class="interest-item">Industrial Automation and PLC</div>
+            <div class="interest-item">SCADA and HMI Systems</div>
+            <div class="interest-item">Renewable Energy Systems</div>
+            <div class="interest-item">Power System Analysis</div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <div class="section-label">03 / SELECTED WORK</div>
+        <h2>Engineering Portfolio</h2>
+
+        <p>
+            Explore my academic and technical projects,
+            including engineering design, system analysis,
+            industrial automation, and renewable energy studies.
+        </p>
+
+        <div class="pdf-viewer">
+            <iframe
+                src="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
+                title="Muhammad Avril Rahmannur Engineering Portfolio">
+            </iframe>
+        </div>
+
+        <div class="pdf-links">
+            <a href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
+               target="_blank" rel="noopener">
+                Open PDF in a new tab
+            </a>
+
+            <a href="Portfolio%20-%20Muhammad%20Avril%20Rahmannur.pdf"
+               download>
+                Download PDF
+            </a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-label">04 / GET IN TOUCH</div>
+        <h2>Contact</h2>
+
+        <p>
+            <a href="mailto:avril.rahmannur05@gmail.com">
+                Email
+            </a>
+            |
+            <a href="https://www.linkedin.com/in/muhammad-avril-rahmannur/"
+               target="_blank" rel="noopener">
+                LinkedIn
+            </a>
+            |
+            <a href="https://github.com/avrilrahmannur"
+               target="_blank" rel="noopener">
+                GitHub
+            </a>
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 Muhammad Avril Rahmannur | Engineering Portfolio</p>
+</footer>
+
+</body>
+</html>
